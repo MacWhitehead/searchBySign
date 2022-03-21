@@ -1,34 +1,30 @@
-import React from 'react'
+import * as React from 'react';
 import {View, Text, StyleSheet, Pressable} from 'react-native'
 import { Button, TextInput } from 'react-native-web'
+import SendUsYourSign from './SendUsYourSign';
 
-const Help = () => {
+function HelpScreen({ navigation }) {
 
     return (
         <View style={styles.container}>
             <Text style={styles.header}>How can we help?</Text>
-            <View>
                 <Text style={styles.sendUsHeader}>Send us a message</Text>
                 <TextInput style={styles.email}  type="email" id="email" name="email" placeholder='Enter your email'></TextInput>
                 <TextInput multiline numberOfLines={4} style={styles.messageInput} name="message" placeholder='Type your message or questions here!'></TextInput>
                 <Pressable style={styles.submitMessage}>
                     <Text style={{color: "white", fontSize: "20px"}}>Submit</Text>
                 </Pressable>
-            </View>
-
-            <View>
                 <Text style={styles.resultHeader}>No results for your sign search?</Text>
-                <Pressable style={styles.sendSign}>
-                    <Text style={{color: "white", fontSize: "24px"}}>Send us your sign</Text>
-                </Pressable>
-            </View>
+                <Button 
+                style={{color: "white", fontSize: "24px"}} 
+                onPress={() => navigation.navigate("SendUsYourSign", {params: {screen: "SendUsYourSign"}})} >Send us your sign</Button>
             <Pressable style={styles.aboutUs}>
                 <Text style={styles.aboutUsText}>About Us</Text>
             </Pressable>
-
         </View>
     )
 }
+
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#edf4fa',
@@ -103,4 +99,4 @@ const styles = StyleSheet.create({
         fontSize: "28px",
     }
 })
-export default Help
+export default HelpScreen
